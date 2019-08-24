@@ -7,5 +7,8 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, length: { in:8..32 }
   validates :password, format: { with: /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/}
+  
+  has_many :topics
+  mount_uploader :image, ImageUploader
 end
  
