@@ -9,6 +9,11 @@ class User < ApplicationRecord
   validates :password, format: { with: /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/}
   
   has_many :topics
+  has_many :favorites
+  has_many :favorite_topics, through: :favorites, source: 'topic'
+  has_many :comments
+  has_many :comments_topics, through: :comments, source: 'topic'
+  
   mount_uploader :image, ImageUploader
 end
  
